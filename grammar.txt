@@ -1,0 +1,47 @@
+START -> Program
+Program -> program Identifier Body .
+Body -> Var_SCT Block
+Body -> Block
+Var_SCT -> var Var_DCL R1
+R1 -> ; Var_DCL R1
+R1 -> ''
+Var_DCL -> Identifier R2 : Type
+R2 -> Identifier R2
+R2 -> ''
+Type -> Integer
+Type -> Boolean
+Block -> begin Stmt R3 end
+R3 -> ; Stmt R3
+R3 -> ''
+Stmt -> Assgm_Stmt
+Stmt -> Read_Stmt
+Stmt -> Write_Stmt
+Stmt -> If_Stmt
+Stmt -> While_Stmt
+Stmt -> Block
+Assgm_Stmt -> Identifier := Expr
+Read_Stmt -> read Identifier
+Write_Stmt -> write Identifier
+Write_Stmt -> write Literal
+If_Stmt -> if Bool_Expr then Stmt
+If_Stmt -> if Bool_Expr then Stmt else Stmt
+While_Stmt -> while Bool_Expr do Stmt
+Expr -> Arithm_Expr
+Expr -> Bool_Expr
+Arithm_Expr -> Arithm_Expr + Term
+Arithm_Expr -> Arithm_Expr - Term
+Arithm_Expr -> Term
+Term -> Term * Factor
+Term -> Factor
+Factor -> Identifier
+Factor -> Int_Literal
+Literal -> Int_Literal
+Literal -> Bool_Literal
+Bool_Literal -> true
+Bool_Literal -> false
+Bool_Expr -> Bool_Literal
+Bool_Expr -> Arithm_Expr > Arithm_Expr
+Bool_Expr -> Arithm_Expr < Arithm_Expr
+Bool_Expr -> Arithm_Expr = Arithm_Expr
+Bool_Expr -> Arithm_Expr >= Arithm_Expr
+Bool_Expr -> Arithm_Expr <= Arithm_Expr
